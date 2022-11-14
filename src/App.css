@@ -22,3 +22,22 @@
   border: 3px solid red;
   padding: 1em;
 }
+
+.message {
+  width: fit-content;
+  max-width: 200px;
+  margin: 8px 0;
+  border-radius: 6px;
+}
+
+.message p {
+  padding: 5px;
+}
+
+.sender {
+  background-color: #860000;
+}
+
+.receiver {
+  background-color: #555555;
+}

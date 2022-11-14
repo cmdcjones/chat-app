@@ -4,12 +4,13 @@ import "./App.css";
 export default function App() {
   const messageOne = {
     user: "sender",
-    message: "hello",
+    message: "Hello, there.",
   };
 
   const messageTwo = {
     user: "receiver",
-    message: "reply",
+    message:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique voluptatem laudantium unde facilis impedit eaque! Amet quidem nulla dolorum architecto sequi tempore natus hic dolor voluptas consequatur? Ab, dolores sint?",
   };
 
   const messageList = [messageOne, messageTwo];
@@ -24,9 +25,9 @@ export default function App() {
       </div>
       <div className="message-container">
         {messageList.map((message) => (
-          <p key={message.user} className={message.user}>
-            {message.message}
-          </p>
+          <div key={message.user} className={message.user + " message"}>
+            <p>{message.message}</p>
+          </div>
         ))}
       </div>
     </div>
