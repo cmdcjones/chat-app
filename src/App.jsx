@@ -2,18 +2,17 @@ import { useState } from "react";
 import "./App.css";
 
 export default function App() {
-  const messageOne = {
-    user: "sender",
-    message: "Hello, there.",
-  };
+  const [message, setMessage] = useState("");
+  const [messageList, setMessageList] = useState([]);
 
-  const messageTwo = {
-    user: "receiver",
-    message:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique voluptatem laudantium unde facilis impedit eaque! Amet quidem nulla dolorum architecto sequi tempore natus hic dolor voluptas consequatur? Ab, dolores sint?",
-  };
-
-  const messageList = [messageOne, messageTwo];
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (message.length < 1) {
+      return;
+    }
+    setMessageList([...messageList, message]);
+    setMessage("");
+  }
 
   return (
     <div className="container">
@@ -25,10 +24,22 @@ export default function App() {
       </div>
       <div className="message-container">
         {messageList.map((message) => (
-          <div key={message.user} className={message.user + " message"}>
-            <p>{message.message}</p>
+          <div key={message} className={"sender message"}>
+            <p>{message}</p>
           </div>
         ))}
+      </div>
+      <div className="send-message">
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <input
+            type="text"
+            name="send-messsage"
+            id="send-message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button>Send!</button>
+        </form>
       </div>
     </div>
   );
