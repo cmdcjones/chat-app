@@ -1,0 +1,16 @@
+.container {
+  max-width: 750px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2em;
+  border-bottom: 3px solid white;
+  min-width: 320px;
+}
+
+.header span {
+  font-size: 1.5em;
+}

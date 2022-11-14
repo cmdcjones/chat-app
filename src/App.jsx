@@ -2,5 +2,14 @@ import { useState } from "react";
 import "./App.css";
 
 export default function App() {
-  return <h1>Hello</h1>;
+  return (
+    <div className="container">
+      <div className="header">
+        <header>
+          <h1>Chat App</h1>
+        </header>
+        <span>X</span>
+      </div>
+    </div>
+  );
 }
