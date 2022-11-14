@@ -1,5 +1,6 @@
 .container {
-  max-width: 750px;
+  max-width: 500px;
+  padding: 1.1em;
 }
 
 .header {
@@ -13,4 +14,11 @@
 
 .header span {
   font-size: 1.5em;
+}
+
+.message-container {
+  margin: 15px 0;
+  max-height: 750px;
+  border: 3px solid red;
+  padding: 1em;
 }
