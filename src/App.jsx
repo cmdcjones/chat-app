@@ -5,6 +5,8 @@ export default function App() {
   const [message, setMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
 
+  const inputBox = document.getElementById("send-message");
+
   function handleSubmit(e) {
     e.preventDefault();
     if (message.length < 1) {
@@ -12,6 +14,7 @@ export default function App() {
     }
     setMessageList([...messageList, message]);
     setMessage("");
+    inputBox.focus();
   }
 
   return (
