@@ -11,6 +11,7 @@
   align-items: center;
   padding: 1.2em;
   border-bottom: 3px solid white;
+  border-top: 3px solid white;
   min-width: 320px;
 }
 
@@ -20,11 +21,14 @@
 
 .message-container {
   margin: 15px 0;
-  max-height: 750px;
+  min-height: 500px;
+  max-height: 500px;
+  min-width: 320px;
   border: 3px solid transparent;
   border-radius: 10px;
   padding: 1em;
   background-color: var(--message-bg-color);
+  overflow: auto;
 }
 
 .message {
@@ -37,6 +41,22 @@
 
 .message p {
   padding: 5px;
+}
+
+.send-message {
+  min-width: 320px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.send-message input {
+  height: 2em;
+  width: 18em;
+}
+
+.send-message button {
+  margin-left: 15px;
+  height: 2em;
 }
 
 .sender {
