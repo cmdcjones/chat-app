@@ -22,10 +22,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+const inputBox = document.getElementById("send-message");
+
 export default function App() {
   const [message, setMessage] = useState("");
-
-  const inputBox = document.getElementById("send-message");
 
   useEffect(() => {
     signInAnonymously(auth).then(() => {
