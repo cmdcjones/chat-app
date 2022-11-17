@@ -4,8 +4,12 @@ import { initializeApp } from "firebase/app";
 import {
   getFirestore,
   collection,
+  query,
+  limit,
   addDoc,
   serverTimestamp,
+  getDocs,
+  orderBy,
 } from "firebase/firestore";
 import { getAuth, signInAnonymously } from "firebase/auth";
 
@@ -21,16 +25,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-
-const inputBox = document.getElementById("send-message");
+const messageRef = collection(db, "messages");
+const q = query(messageRef, orderBy("createdAt", "desc"), limit(20));
 
 export default function App() {
   const [message, setMessage] = useState("");
+  const [messageList, setMessageList] = useState([]);
+  const inputBox = document.getElementById("send-message");
 
   useEffect(() => {
     signInAnonymously(auth).then(() => {
       console.log(`Signed in as: ${auth.currentUser.uid}`);
     });
+
+    async function getData() {
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((message) => {
+        console.log(message.get("message"));
+      });
+    }
+    getData();
   }, []);
 
   function handleMessageSend(e) {
@@ -45,13 +59,13 @@ export default function App() {
 
   async function addData() {
     try {
-      const messageRef = await addDoc(collection(db, "messages"), {
+      await addDoc(messageRef, {
         message: message,
         uid: auth.currentUser.uid,
         createdAt: serverTimestamp(),
       });
       console.log(
-        `Document written with - ID: ${messageRef.id} MSG: ${message} UID: ${uid}`
+        `Document written with - ID: ${messageRef.id} MSG: ${message} UID: ${auth.currentUser.uid}`
       );
     } catch (e) {
       console.log("Error adding document: ", e);
