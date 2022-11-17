@@ -41,7 +41,7 @@ export default function App() {
     async function getData() {
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((message) => {
-        console.log(message.get("message"));
+        setMessageList((messages) => [...messages, message.data()]);
       });
     }
     getData();
@@ -80,7 +80,11 @@ export default function App() {
         </header>
         <span>X</span>
       </div>
-      <div className="message-container"></div>
+      <div className="message-container">
+        {messageList.map((message) => (
+          <p>{message.message}</p>
+        ))}
+      </div>
       <div className="send-message">
         <form onSubmit={(e) => handleMessageSend(e)}>
           <input
