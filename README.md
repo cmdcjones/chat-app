@@ -1,10 +1,11 @@
-# Chat App
+# Superchat
 
-#### A simple web application to chat with friends or anonymous users
+#### A simple web application to chat with friends or anonymous users :speech_balloon:
 
-## Technology used:
+- Created with JavaScript and React
+- Google Cloud Platform backend; fetches data from Firebase Firestore :fire:
+- Anonymous authentication provided by Cloud Auth :cloud:
+- Bundled and minified with Vite :zap:
 
-- JavaScript
-- React.js
-- Google Cloud Platform: Firebase, Cloud Firestore, Authentication
-- Vite
+## Mobile
+![](img/superchat.png)
